@@ -1,0 +1,31 @@
+
+🔹 Stap 1: Branch maken
+
+ Ga naar de repo in GitHub.
+ Klik op de branch-selector (staat meestal op develop).
+ Typ een nieuwe naam, bv. feature/mijn-feature.
+ Klik op Create branch: feature/mijn-feature from ‘develop’.
+
+🔹 Stap 2: Wijziging maken
+
+ Open de branch feature/mijn-feature.
+ Klik op Add file → Create new file (of bewerk een bestaand bestand).
+ Schrijf je code/tekst en commit de wijziging naar de featurebranch.
+
+🔹 Stap 3: Pull Request (PR)
+
+ Klik op Compare & pull request.
+ Controleer dat base = develop en compare = feature/mijn-feature.
+ Vul titel en beschrijving in (de PR-template staat er automatisch in).
+ Klik op Create pull request.
+
+🔹 Stap 4: Merge
+
+ Controleer de wijzigingen in het tabblad Files changed.
+ Kies Merge pull request (of Squash and merge voor één nette commit).
+ Klik op Confirm merge.
+
+🔹 Stap 5: Opruimen
+
+ Controleer of de branch automatisch verwijderd is (auto-delete staat aan).
+ Indien niet: klik zelf op Delete branch.
