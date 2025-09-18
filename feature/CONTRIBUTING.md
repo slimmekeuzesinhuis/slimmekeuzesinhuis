@@ -1,29 +1,43 @@
-Branch conventies (GitHub repo slimmekeuzesinhuis)
-1. Hoofdbranches
+# Branching conventies voor SlimmeKeuzesInHuis
 
-main → productie / stabiele releases
-develop → integratie van nieuwe features, voorbereiden releases
+## Hoofdbranches
+- **main** → productie / stabiele releases  
+- **develop** → integratie van nieuwe features, voorbereiden releases  
 
-2. Werkbranches
+## Werkbranches
+Gebruik kleine letters, woorden gescheiden door `-`, en een prefix:
 
-Gebruik altijd kleine letters, woorden gescheiden met -, en een prefix om het type branch duidelijk te maken:
+- **feature/**  
+  Voor nieuwe functionaliteit.  
+  Voorbeeld: `feature/homepage-layout`, `feature/add-search-bar`  
 
-feature/
-Voor nieuwe functionaliteit.
-🔹 Voorbeeld: feature/homepage-layout, feature/add-search-bar
+- **fix/**  
+  Voor bugfixes die nog niet live zijn.  
+  Voorbeeld: `fix/mobile-menu`  
 
-fix/
-Voor bugfixes die nog niet live zijn.
-🔹 Voorbeeld: fix/mobile-menu
+- **hotfix/**  
+  Voor urgente productiebugs direct vanaf **main**.  
+  Voorbeeld: `hotfix/login-crash`  
 
-hotfix/
-Voor urgente productiebugs die direct vanaf main opgelost moeten worden.
-🔹 Voorbeeld: hotfix/login-crash
+- **release/**  
+  Voor releasevoorbereiding vanuit develop naar main.  
+  Voorbeeld: `release/v1.0.0`  
 
-release/
-Voor releasevoorbereiding vanuit develop naar main. Hier kun je nog kleine fixes doen.
-🔹 Voorbeeld: release/v1.0.0
+- **chore/** *(optioneel)*  
+  Voor onderhoud, documentatie of refactoren.  
+  Voorbeeld: `chore/update-dependencies`
 
-chore/ (optioneel)
-Voor onderhoudstaken zoals CI/CD, documentatie, of refactoren.
-🔹 Voorbeeld: chore/update-dependencies
+---
+
+## Werkwijze
+1. Maak een nieuwe branch vanaf **develop** met een duidelijke naam (zie hierboven).  
+2. Doe je wijzigingen in die branch.  
+3. Maak een **Pull Request** naar **develop**.  
+4. Alleen bij een release maak je een **Pull Request** van **develop** naar **main**.  
+5. Na het mergen: verwijder de featurebranch.
+
+---
+
+## Extra tip
+- Voeg in commit-boodschappen korte omschrijvingen toe, zoals `feat: homepage layout` of `fix: login bug`.  
+- Zo blijven PR’s en changelogs overzichtelijk.
