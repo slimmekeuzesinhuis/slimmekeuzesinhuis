@@ -1,15 +1,15 @@
 docs:
-  - "**/*.md"
-  - "docs/**"
+  - changed-files:
+      - any-glob-to-any-file: ["**/*.md", "docs/**"]
 
 chore:
-  - ".github/**"
-  - "tsconfig.json"
-  - "package.json"
+  - changed-files:
+      - any-glob-to-any-file: [".github/**", "tsconfig.json", "package.json"]
 
 feature:
-  - "app/**"
+  - changed-files:
+      - any-glob-to-any-file: ["app/**"]
 
 refactor:
-  - "app/**"
-  - "src/**"
+  - changed-files:
+      - any-glob-to-any-file: ["app/**", "src/**"]
