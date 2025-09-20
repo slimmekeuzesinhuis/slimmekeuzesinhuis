@@ -1,0 +1,24 @@
+name: Feature request
+description: Vraag een nieuwe functionaliteit aan.
+title: "[FEATURE] "
+labels: ["feature"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Probleem / kans
+      description: Waarom is dit nodig?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Voorstel
+      description: Wat wil je bouwen?
+  - type: checkboxes
+    id: acceptance
+    attributes:
+      label: Acceptatiecriteria
+      options:
+        - label: Duidelijke scope
+        - label: Testbaar
