@@ -1,20 +1,17 @@
-"use client"; // nodig om de huidige url te kunnen lezen
+"use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 function NavLink({ href, children }) {
   const pathname = usePathname();
-  const isActive =
-    href === "/"
-      ? pathname === "/"
-      : pathname === href || pathname.startsWith(href + "/");
+  const isActive = pathname === href || pathname?.startsWith(href + "/");
 
   const base =
-    "inline-flex items-center px-2 py-1 rounded-md text-sm transition-colors";
+    "inline-flex items-center px-2 py-1 rounded-md text-sm transition-colors border";
   const active =
-    "text-emerald-700 bg-emerald-50 border border-emerald-200";
+    "text-emerald-700 bg-emerald-50 border-emerald-200";
   const inactive =
-    "text-gray-700 hover:text-gray-900 hover:bg-gray-50 border border-transparent";
+    "text-slate-700 hover:text-slate-900 hover:bg-slate-50 border-transparent";
 
   return (
     <Link
@@ -34,10 +31,11 @@ export default function Header() {
         <Link href="/" className="font-semibold">
           Slimme keuzes in huis
         </Link>
+
         <div className="flex gap-2">
           <NavLink href="/">Home</NavLink>
-          <NavLink href="/checklist">Checklist</NavLink>
           <NavLink href="/over">Over</NavLink>
+          <NavLink href="/checklist">Checklist</NavLink>
         </div>
       </nav>
     </header>
