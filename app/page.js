@@ -18,8 +18,8 @@ export default function Home() {
       </h1>
 
       <p className="mt-4 text-slate-600">
-        We helpen je stap voor stap (korte, haalbare acties) met duidelijke uitleg
-        (wat en waarom).
+        We helpen je stap voor stap (korte, haalbare acties) met duidelijke
+        uitleg (wat en waarom).
       </p>
 
       <div className="mt-6 flex gap-3">
