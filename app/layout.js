@@ -4,24 +4,27 @@ import Footer from "./components/Footer.jsx";
 
 export const metadata = {
   metadataBase: new URL("https://slimmekeuzesinhuis.vercel.app"),
-  title: { default: "Slimme keuzes in huis", template: "%s | Slimme keuzes in huis" },
+  title: {
+    default: "Slimme keuzes in huis",
+    template: "%s | Slimme keuzes in huis",
+  },
   description:
-    "Praktische tips en stappen om je huis comfortabeler en energiezuiniger te maken.",
+    "Praktische tips om je huis comfortabeler en energiezuiniger te maken.",
   openGraph: {
-    type: "website",
-    url: "/",
-    siteName: "Slimme keuzes in huis",
-    locale: "nl_NL",
     title: "Slimme keuzes in huis",
     description:
-      "Praktische tips en stappen om je huis comfortabeler en energiezuiniger te maken."
+      "Praktische tips om je huis comfortabeler en energiezuiniger te maken.",
+    url: "/",
+    siteName: "Slimme keuzes in huis",
+    type: "website",
+    locale: "nl_NL",
   },
   twitter: {
     card: "summary_large_image",
     title: "Slimme keuzes in huis",
     description:
-      "Praktische tips en stappen om je huis comfortabeler en energiezuiniger te maken."
-  }
+      "Praktische tips om je huis comfortabeler en energiezuiniger te maken.",
+  },
 };
 
 export default function RootLayout({ children }) {
