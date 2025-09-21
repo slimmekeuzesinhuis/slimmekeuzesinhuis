@@ -1,0 +1,33 @@
+name: Bug report
+description: Meld een fout met duidelijke stappen.
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Wat ging er mis?
+      description: Beschrijf kort het probleem.
+      placeholder: Beschrijving…
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Stappen om te reproduceren
+      value: |
+        1. …
+        2. …
+        3. …
+  - type: input
+    id: url
+    attributes:
+      label: URL of scherm
+      placeholder: https://…
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Impact
+      options: ["Laag","Middel","Hoog","Blokkerend"]
+    validations:
+      required: true
