@@ -1,4 +1,6 @@
 import "./globals.css";
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
 
 export const metadata = {
   metadataBase: new URL("https://slimmekeuzesinhuis.vercel.app"),
