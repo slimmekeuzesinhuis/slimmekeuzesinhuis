@@ -1,41 +1,62 @@
-import Link from "next/link";
+import Section from "./components/ui/Section";
+import Top3 from "./components/Top3";
+import CategoryCard from "./components/CategoryCard";
 
-export const metadata = {
-  title: "Slimme keuzes in huis",
-  description:
-    "We helpen je stap voor stap met korte, haalbare acties en duidelijke uitleg (wat en waarom).",
-};
+const demoProducts = [
+  {
+    id: "radfolie-123",
+    title: "Radiatorfolie set",
+    brand: "WarmHuis",
+    price: 19.95,
+    tags: ["quick-win", "isoleren"],
+    images: [{ src: "https://placehold.co/600x400?text=Radiatorfolie", alt: "Radiatorfolie" }],
+    affiliate: { url: "#" }
+  },
+  {
+    id: "tochtstrip-456",
+    title: "Tochtstrips (4m)",
+    brand: "SealPro",
+    price: 9.99,
+    tags: ["kierdichting", "quick-win"],
+    images: [{ src: "https://placehold.co/600x400?text=Tochtstrips", alt: "Tochtstrips" }],
+    affiliate: { url: "#" }
+  },
+  {
+    id: "ledlamp-789",
+    title: "LED-lampen set (6 st.)",
+    brand: "Bright",
+    price: 14.95,
+    tags: ["verlichting", "besparen"],
+    images: [{ src: "https://placehold.co/600x400?text=LED", alt: "LED lampen" }],
+    affiliate: { url: "#" }
+  }
+];
+
+const demoCategories = [
+  { slug: "isoleren", name: "Isoleren", description: "Snel warme winst met kleine ingrepen." },
+  { slug: "verwarming", name: "Verwarming", description: "Slim stoken met minder gas." }
+];
 
 export default function Home() {
   return (
-    <section className="mx-auto max-w-5xl px-4 py-12">
-      <p className="text-sm font-semibold text-emerald-700">
-        SLIMME KEUZES IN HUIS
-      </p>
+    <>
+      <Section
+        title="Top 3 snelle bespaarders"
+        intro="Drie populaire producten die vaak meteen resultaat geven."
+      >
+        <Top3 products={demoProducts} />
+      </Section>
 
-      <h1 className="mt-2 text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
-        Praktische tips om je huis comfortabeler én energiezuiniger te maken
-      </h1>
-
-      <p className="mt-4 text-slate-600">
-        We helpen je stap voor stap (korte, haalbare acties) met duidelijke
-        uitleg (wat en waarom).
-      </p>
-
-      <div className="mt-6 flex gap-3">
-        <Link
-          href="/checklist"
-          className="rounded-md bg-emerald-700 px-4 py-2 text-white hover:bg-emerald-800"
-        >
-          Start met besparen
-        </Link>
-        <Link
-          href="/over"
-          className="rounded-md border border-slate-300 px-4 py-2 text-slate-700 hover:bg-slate-50"
-        >
-          Lees meer
-        </Link>
-      </div>
-    </section>
+      <Section
+        title="Categorieën"
+        intro="Ontdek waar je het beste kunt beginnen."
+      >
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {demoCategories.map((c) => (
+            <CategoryCard key={c.slug} category={c} />
+          ))}
+        </div>
+      </Section>
+    </>
   );
 }
