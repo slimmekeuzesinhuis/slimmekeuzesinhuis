@@ -8,38 +8,47 @@ export const dynamic = 'force-dynamic';
 function json(data, status = 200) {
   return new NextResponse(JSON.stringify(data), {
     status,
-    headers: { 'content-type': 'application/json', 'cache-control': 'no-store' },
+    headers: {
+      'content-type': 'application/json',
+      'cache-control': 'no-store',
+    },
   });
 }
 
 async function handle(req) {
   const url = new URL(req.url);
 
-  // 1) Probeer querystring, val terug op JSON-body
-  let secret = url.searchParams.get('secret');
-  let tag = url.searchParams.get('tag');
+  // Helpers om query params te lezen
+  const getAllQuery = (name) => url.searchParams.getAll(name).filter(Boolean);
 
-  if (!secret || !tag) {
-    if (req.headers.get('content-type')?.includes('application/json')) {
-      const body = await req.json().catch(() => ({}));
-      secret ||= body?.secret;
-      tag ||= body?.tag;
-    }
+  // 1) Secret & tags uit de query
+  let secret = url.searchParams.get('secret') || null;
+  let tags = getAllQuery('tag'); // ?tag=home&tag=checklist
+
+  // 2) Vallen terug op JSON body indien nodig
+  if ((!secret || tags.length === 0) && req.headers.get('content-type')?.includes('application/json')) {
+    const body = await req.json().catch(() => ({}));
+    secret ||= body?.secret ?? null;
+    if (Array.isArray(body?.tags)) tags = body.tags.filter(Boolean);
+    if (!tags.length && body?.tag) tags = [body.tag];
   }
 
+  // 3) Validatie
   if (!secret || secret !== process.env.REVALIDATE_SECRET) {
     return json({ ok: false, error: 'Unauthorized' }, 401);
   }
-
-  if (!tag) {
-    return json({ ok: false, error: 'Missing "tag"' }, 400);
+  if (!tags.length) {
+    return json({ ok: false, error: 'Missing tag(s)' }, 400);
   }
 
+  // 4) Revalidate alle tags
   try {
-    revalidateTag(tag);
+    for (const t of tags) {
+      await revalidateTag(t);
+    }
     const ts = new Date().toISOString();
-    console.log(`[revalidate] tag=${tag} ts=${ts}`);
-    return json({ ok: true, tag, ts });
+    console.log('[revalidate]', { tags, ts });
+    return json({ ok: true, tags, ts });
   } catch (err) {
     return json({ ok: false, error: err?.message ?? 'revalidateTag failed' }, 500);
   }
